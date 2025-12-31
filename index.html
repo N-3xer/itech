@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>iTech — Three Pillars. Infinite Impact.</title>
+    <meta name="description" content="iTech — Education, SaaS, Web Development. Three pillars. Infinite impact." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@700;800&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN + config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'itech-dark': '#2D2626',
+              'itech-burgundy': '#7A2120',
+              'itech-coral': '#EA5250',
+              'itech-red': '#8C3130',
+              'itech-blush': '#FCE7E7'
+            },
+            fontFamily: {
+              'primary': ['Space Grotesk', 'Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body class="bg-itech-dark text-itech-blush font-primary antialiased">
+    <a class="sr-only" href="#main" id="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full z-40 top-0 left-0 transition-colors duration-300" id="site-header">
+      <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="navbar-brand" aria-label="iTech home">
+          <span class="navbar-logo-text">i-<span class="navbar-logo-tech">Tech</span></span>
+        </a>
+        <div class="hidden md:flex gap-8 items-center text-sm">
+          <a href="education.html" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center ml-4">
+          <a href="#contact" class="get-started inline-flex items-center justify-center px-5 py-2 rounded-md font-semibold" aria-label="Get Started">Get Started</a>
+        </div>
+        <button id="mobile-toggle" aria-expanded="false" class="md:hidden p-2 rounded focus:outline-none focus:ring-2">
+          <span class="sr-only">Open menu</span>
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-itech-dark/90 backdrop-blur-sm">
+        <div class="px-6 py-4 flex flex-col gap-3">
+          <a href="education.html" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="education.html" class="get-started inline-block text-center mt-2" aria-label="Get Started">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main id="main">
+      <section id="hero" class="relative overflow-hidden">
+        <!-- Three.js canvas (lazy init) -->
+        <!-- Particle system settings are in js/three-scene.js (USE_PARTICLES, PARTICLE_DENSITY) -->
+        <div id="three-container" class="absolute inset-0 -z-10"></div>
+
+        <div class="max-w-7xl mx-auto h-full px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          <!-- LEFT: Headline and inline slideshow text -->
+          <div class="py-8 md:py-0 text-center md:text-left mt-12 md:mt-20">
+            <h1 id="hero-headline" class="font-extrabold text-5xl md:text-[6rem] lg:text-[7rem] leading-tight text-itech-blush opacity-0">Three Pillars.<br class="hidden md:block">Infinite Impact.</h1>
+
+            <!-- Subtitle and CTA (CTA restyled and accessible) -->
+            <div class="mt-8">
+              <h3 class="text-3xl md:text-4xl font-bold text-itech-blush opacity-0">Three pillars. One vision. Infinite possibilities.</h3>
+
+              <p id="hero-sub" class="text-lg md:text-xl text-itech-blush/80 opacity-0 p-2">We don't just build products. We build futures.</p>
+              <div class="mt-6">
+                <a href="#three-pillars" id="cta-hero" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md text-lg font-semibold transform transition hover:scale-105" aria-label="Explore Our Solutions">Explore Our Solutions</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Clean hero image and slideshow (stacked vertically) -->
+          <div class="flex flex-col items-center justify-center gap-4 py-8 md:py-0">
+            <picture>
+              <source srcset="./images/zerobackground image.webp" type="image/webp">
+              <img src="./images/people/model8.jpg" alt="Abstract tech visual" class="max-w-full rounded-lg shadow-lg object-cover w-full md:w-auto" style="max-height:400px;" loading="lazy">
+            </picture>
+            <!-- Slide phrases displayed below the hero image as H4-sized text -->
+            <h4 id="slideshow" class="slideshow-below-image text-lg md:text-xl lg:text-2xl font-semibold text-itech-blush text-center" role="status" aria-live="polite"></h4>
+          </div>
+        </div>
+      </section>
+
+      
+          
+        
+
+
+      <!-- Placeholder for Three Pillars -->
+      <section id="three-pillars" class="py-20">
+        <!--
+          Three Pillars:
+          - Each `.pillar-card` uses a top image (background-image inline) and a tinted overlay.
+          - To change images, update the `style="background-image:url(...)"` on the `.card-top`.
+          - The large watermark is decorative (low opacity) and adjusts color in `css/custom.css`.
+        -->
+        <div class="max-w-7xl mx-auto px-6">
+          <h3 class="text-4xl font-bold mb-16 text-itech-blush text-center">Our Three Pillars</h3>
+          <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <article class="pillar-card" id="card-1">
+              <div class="card-top" style="background-image:url('./images/people/model1.jpg')">
+                <div class="tint"></div>
+                <div class="card-watermark">01</div>
+              </div>
+              <div class="card-bottom">
+                <h4 class="text-2xl font-bold text-itech-blush">From Code Curious to Career Ready</h4>
+                <p class="mt-3 text-itech-blush/80 leading-7 text-sm">We're not just teaching code—we're engineering careers. Our intensive programs transform ambitious learners into industry-ready developers through real projects, real deadlines, and real outcomes. In months, not years, you'll build a portfolio that opens doors. Global access. Local expertise. Your future starts here.</p>
+                <a href="#contact" class="mt-6 inline-block bg-itech-coral text-itech-blush py-2 px-4 rounded text-sm">Launch Your Career</a>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="pillar-card" id="card-2">
+              <div class="card-top" style="background-image:url('./images/people/model2.jpg')">
+                <div class="tint" style="background-color:rgba(255, 255, 255, 0.6)"></div>
+                <div class="card-watermark">02</div>
+              </div>
+              <div class="card-bottom">
+                <h4 class="text-2xl font-bold text-itech-blush">Software That Solves What Matters</h4>
+                <p class="mt-3 text-itech-blush/80 leading-7 text-sm">The biggest problems aren't being solved by the biggest companies. We build targeted SaaS products for markets others ignore—school systems that actually work, security solutions that fit real needs, checkout systems built for how business actually happens. Purpose-built. Revenue-generating. Problem-solving at scale.</p>
+                <a href="#contact" class="mt-6 inline-block bg-itech-coral text-itech-blush py-2 px-4 rounded text-sm">Explore Our Products</a>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="pillar-card" id="card-3">
+              <div class="card-top" style="background-image:url('./images/people/pexels-william-fortunato-6393342.jpg')">
+                <div class="tint"></div>
+                <div class="card-watermark">03</div>
+              </div>
+              <div class="card-bottom">
+                <h4 class="text-2xl font-bold text-itech-blush">Your Digital Presence, Perfected</h4>
+                <p class="mt-3 text-itech-blush/80 leading-7 text-sm">From first pixel to final deployment, we craft web experiences that convert. Whether you need a sleek one-pager that stops the scroll or a complex multi-page platform that powers your business—we handle it all. Design. Development. Hosting. Maintenance. Your vision, our execution, exceptional results.</p>
+                <a href="#contact" class="mt-6 inline-block bg-itech-coral text-itech-blush py-2 px-4 rounded text-sm">Build With Us</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Value Proposition -->
+      <section id="value-prop" class="py-24 section-secondary">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+          <h2 class="text-4xl font-bold text-itech-blush mb-20">Why iTech Changes Everything</h2>
+
+          <!-- Block 1: Image LEFT, Text RIGHT -->
+          <div class="value-block mb-12">
+            <div class="value-image" style="background-image:url('./images/people/model4.jpg')"></div>
+            <div class="value-text">
+              <h3 class="text-3xl font-bold">Integrated Expertise</h3>
+              <p class="mt-4 text-lg leading-7">Three pillars aren't three separate companies—they're one ecosystem. The developers we train build the products we ship. The clients we serve inform the curriculum we teach. Everything connects. Everything compounds.</p>
+            </div>
+          </div>
+
+          <!-- Block 2: Text LEFT, Image RIGHT -->
+          <div class="value-block reverse mb-12">
+            <div class="value-image" style="background-image:url('./images/people/model5.jpg')"></div>
+            <div class="value-text">
+              <h3 class="text-3xl font-bold">Market Intelligence</h3>
+              <p class="mt-4 text-lg leading-7">We don't chase trends. We identify gaps. While others build for everyone, we build for specific markets with specific needs. Focused strategy. Measurable impact. Real revenue.</p>
+            </div>
+          </div>
+
+          <!-- Block 3: Image LEFT, Text RIGHT -->
+          <div class="value-block mb-12">
+            <div class="value-image" style="background-image:url('./images/people/model6.jpg')"></div>
+            <div class="value-text">
+              <h3 class="text-3xl font-bold">End-to-End Excellence</h3>
+              <p class="mt-4 text-lg leading-7">From training talent to shipping software to crafting digital experiences—iTech is your complete technology partner. One conversation. Multiple solutions. Zero compromises.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section id="stats" class="py-32 section-2">
+        <div class="max-w-6xl mx-auto px-6 text-center text-itech-blush">
+          <div class="grid md:grid-cols-3 gap-10 items-center">
+            <div>
+              <div class="stats-number" data-count="3">3</div>
+              <div class="stats-label mt-2">Core Pillars</div>
+              <div class="stats-sub mt-2">One integrated technology ecosystem</div>
+            </div>
+            <div>
+              <div class="stats-number">∞</div>
+              <div class="stats-label mt-2">Infinite Possibilities</div>
+              <div class="stats-sub mt-2">Limited only by imagination, not infrastructure</div>
+            </div>
+            <div>
+              <div class="stats-number" data-count="100">100%</div>
+              <div class="stats-label mt-2">Committed</div>
+              <div class="stats-sub mt-2">To building technology that matters</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Who We Serve -->
+      <section id="who" class="py-32 section-secondary">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+          <h2 class="text-4xl font-bold text-itech-blush mb-12">Who We Serve</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="who-card">
+              <h4 class="text-2xl font-bold">For Aspiring Developers</h4>
+              <p class="mt-3 text-itech-blush/80">Stop learning in isolation. Start building with purpose. Our programs don't just teach syntax—they build careers. If you're ready to commit, we're ready to transform you.</p>
+            </div>
+            <div class="who-card">
+              <h4 class="text-2xl font-bold">For Growing Businesses</h4>
+              <p class="mt-3 text-itech-blush/80">Your business has unique challenges. Generic software won't cut it. Whether you need a custom SaaS solution or a website that actually converts, we build technology that fits your reality.</p>
+            </div>
+            <div class="who-card">
+              <h4 class="text-2xl font-bold">For Visionary Partners</h4>
+              <p class="mt-3 text-itech-blush/80">See what we see? The untapped markets. The overlooked opportunities. The technology gaps waiting to be filled. Let's build something that matters together.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials / Carousel -->
+      <section id="testimonials" class="carousel-section">
+        <!--
+          Carousel notes:
+          - Slides transition via CSS when `.active` is toggled by `js/main.js`.
+          - `#carousel-announcer` is a visually-hidden live region updated for screen readers.
+        -->
+        <div class="max-w-6xl mx-auto px-6 text-center">
+          <h2 class="carousel-title">What People Are Saying</h2>
+
+          <div class="carousel-container" role="region" aria-label="Testimonials carousel">
+            <button class="carousel-nav prev" aria-label="Previous" id="carousel-prev">&lt;</button>
+            <div class="carousel-track" id="carousel-track" aria-live="polite">
+              <div class="carousel-slide active">
+                <div class="testimonial-content">
+                  <picture>
+                   <!--<source srcset="/images/people/model7.webp" type="image/webp"> -->
+                    <img src="/images/people/model6.jpg" alt="Sarah Kimani" class="testimonial-image" loading="lazy">
+                  </picture>
+                  <blockquote class="testimonial-quote">"iTech's bootcamp transformed my career. From zero coding knowledge to landing my first developer role in just 4 months. The hands-on projects were game-changing."</blockquote>
+                  <div class="testimonial-attribution"><p class="testimonial-name">Sarah Kimani</p><p class="testimonial-role">Junior Developer, Safaricom</p></div>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <div class="testimonial-content">
+                  <picture>
+                    <!--<source srcset="/images/people/model8.webp" type="image/webp">-->
+                    <img src="/images/people/pexels-dayana-joseph-68270166-8312669.jpg" alt="David Omondi" class="testimonial-image" loading="lazy">
+                  </picture>
+                  <blockquote class="testimonial-quote">"Their school management system solved problems we didn't even know we had. Intuitive, powerful, and built specifically for Kenyan schools."</blockquote>
+                  <div class="testimonial-attribution"><p class="testimonial-name">David Omondi</p><p class="testimonial-role">Principal, Nairobi Academy</p></div>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <div class="testimonial-content">
+                  <picture>
+                    <!--<source srcset="/images/people/model9.webp" type="image/webp">-->
+                    <img src="/images/people/pexels-shkrabaanthony-5244025.jpg" alt="Grace Wanjiru" class="testimonial-image" loading="lazy">
+                  </picture>
+                  <blockquote class="testimonial-quote">"From concept to launch in 3 weeks. iTech delivered a website that not only looks stunning but actually converts visitors into customers."</blockquote>
+                  <div class="testimonial-attribution"><p class="testimonial-name">Grace Wanjiru</p><p class="testimonial-role">Founder, Grow Digital Kenya</p></div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-nav next" aria-label="Next" id="carousel-next">&gt;</button>
+            <!-- Live announcer for screen readers to provide slide context -->
+            <div id="carousel-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+          </div>
+
+          <div class="carousel-dots" id="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section id="final-cta" class="py-40 text-center cta-section">
+        <div class="">
+          <h2 class="text-5xl md:text-6xl font-extrabold ctatext">Ready to Build Something Extraordinary?</h2>
+          <p class="mt-4 ctatext">Whether you're launching a career, scaling a business, or solving a problem—iTech is your partner in what comes next.</p>
+          <div class="mt-6">
+            <a href="#contact" class=" contactform inline-block bg-itech-coral text-itech-blush py-4 px-10 rounded-full text-xl font-semibold hover:scale-105">Start the Conversation</a>
+            <div class="mt-4">
+              <a href="#" class="somecta">See What's Possible</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer-dark border-t border-t-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
+          <!-- Three-column grid layout -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+            
+            <!-- Column 1: Brand & Mission -->
+            <div class="footer-column">
+              <h3 class="text-lg font-bold text-white mb-4">About iTech</h3>
+              <p class="text-gray-400 mb-4 leading-relaxed">iTech: Where Education Meets Innovation Meets Execution</p>
+              <p class="text-gray-400 mb-6 leading-relaxed">Building the future of technology, one solution at a time.</p>
+              <p class="text-gray-500 text-sm">© 2024 iTech. All rights reserved.</p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+              <h3 class="text-lg font-bold text-white mb-4">Quick Links</h3>
+              <nav class="flex flex-col gap-3 links">
+                <a href="#education" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Education</a>
+                <a href="#saas" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">SaaS</a>
+                <a href="#web" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Web Development</a>
+                <a href="#contact" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Contact</a>
+              </nav>
+            </div>
+
+            <!-- Column 3: Get in Touch -->
+            <div class="footer-column">
+              <h3 class="text-lg font-bold text-white mb-4">Let's Connect</h3>
+              <p class="text-gray-400 mb-6 leading-relaxed">Ready to start your next project?</p>
+              <a href="mailto:hello@itech.com" class="inline-block text-itech-coral font-semibold hover:text-itech-blush transition-colors">hello@itech.com</a>
+              <p class="text-gray-500 text-sm mt-6">Get in touch with us to discuss your ideas and bring them to life.</p>
+            </div>
+
+          </div>
+
+          <!-- Footer bottom divider and copyright summary -->
+          <div class="border-t border-t-white/10 mt-12 pt-6 text-center">
+            <p class="text-gray-500 text-sm">Crafted with care by iTech — Empowering the next generation of technology leaders.</p>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/three-scene.js" defer></script>
+    <script src="js/animations.js" defer></script>
+  </body>
+</html>

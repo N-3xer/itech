@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Technical Education | iTech</title>
+    <meta name="description" content="Transform from code curious to career ready. iTech's intensive technical education programs build industry-ready developers through real projects and real outcomes. Your future starts here." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@700;800&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN + config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'itech-dark': '#2D2626',
+              'itech-burgundy': '#7A2120',
+              'itech-coral': '#EA5250',
+              'itech-red': '#8C3130',
+              'itech-blush': '#FCE7E7'
+            },
+            fontFamily: {
+              'primary': ['Space Grotesk', 'Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body class="bg-itech-dark text-itech-blush font-primary antialiased">
+    <a class="sr-only" href="#main" id="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full z-40 top-0 left-0 transition-colors duration-300" id="site-header">
+      <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="navbar-brand" aria-label="iTech home">
+          <span class="navbar-logo-text">i-<span class="navbar-logo-tech">Tech</span></span>
+        </a>
+        <div class="hidden md:flex gap-8 items-center text-sm">
+          <a href="#education" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center ml-4">
+          <a href="#contact" class="get-started inline-flex items-center justify-center px-5 py-2 rounded-md font-semibold" aria-label="Get Started">Get Started</a>
+        </div>
+        <button id="mobile-toggle" aria-expanded="false" class="md:hidden p-2 rounded focus:outline-none focus:ring-2">
+          <span class="sr-only">Open menu</span>
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-itech-dark/90 backdrop-blur-sm">
+        <div class="px-6 py-4 flex flex-col gap-3">
+          <a href="index.html#education" class="nav-link">Education</a>
+          <a href="index.html#saas" class="nav-link">SaaS</a>
+          <a href="index.html#web" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#contact" class="get-started inline-block text-center mt-2" aria-label="Get Started">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main">
+      <!-- HERO SECTION -->
+      <section id="hero" class="relative overflow-hidden">
+        <div id="three-container" class="absolute inset-0 -z-10"></div>
+
+        <div class="max-w-7xl mx-auto h-full px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-32">
+          <div class="py-8 md:py-0 text-center md:text-left mt-12 md:mt-20">
+            <h1 id="hero-headline" class="font-extrabold text-5xl md:text-[5rem] lg:text-[6rem] leading-tight text-itech-blush opacity-0">From Code Curious to Career Ready</h1>
+            <p id="hero-sub" class="text-lg md:text-xl text-itech-blush/80 opacity-0 mt-6">We're not just teaching code—we're engineering careers. Transform into an industry-ready developer in months, not years.</p>
+            <div class="mt-8 flex flex-col md:flex-row gap-4">
+              <a href="#programs" id="cta-hero" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md text-lg font-semibold transform transition hover:scale-105" aria-label="Explore Programs">Explore Programs</a>
+              <a href="#contact" class="inline-block bg-transparent border-2 border-itech-coral text-itech-coral py-3 px-6 rounded-md text-lg font-semibold transform transition hover:bg-itech-coral hover:text-white" aria-label="Talk to an Advisor">Talk to an Advisor</a>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col items-center justify-center gap-4 py-8 md:py-0">
+            <picture>
+              
+              <img src="/images/pexels-tima-miroshnichenko-5380666.jpg" alt="Developer working on code" class="max-w-full rounded-lg shadow-lg object-cover w-full md:w-auto" style="max-height:400px;" loading="lazy">
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRODUCTION SECTION -->
+      <section id="intro" class="py-24 bg-itech-burgundy">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="text-center mb-12">
+            <p class="text-itech-coral font-semibold mb-3">Pillar 01: Technical Education</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-itech-blush mb-8">Your Career Transformation Starts Here</h2>
+          </div>
+          <div class="space-y-6 text-itech-blush/90 text-lg leading-relaxed">
+            <p>The traditional path is broken. Spend four years and six figures on theory that's outdated before you graduate. Or spend months with iTech learning what actually matters—building real products, meeting real deadlines, delivering real results.</p>
+            <p>Our intensive programs are designed for ambitious learners who are ready to commit. We don't waste time on theory for theory's sake. Every lesson has a purpose. Every project builds your portfolio. Every deadline prepares you for the real world.</p>
+            <p class="font-semibold text-itech-blush">The outcome? A portfolio that opens doors. Skills that get you hired. Confidence that carries your career.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY iTECH EDUCATION WORKS -->
+      <section id="difference" class="py-24 bg-itech-dark">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">Why iTech Education Works</h2>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Real Projects, Real Outcomes</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Forget toy projects and tutorial hell. You'll build production-grade applications that solve real problems. By graduation, you'll have a portfolio that proves you can deliver—not just learn.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Industry-Focused Curriculum</h3>
+              <p class="text-itech-blush/80 leading-relaxed">We teach what the market actually needs. Our curriculum evolves with the industry, informed by the products we build and the clients we serve. You learn what works today, not what worked five years ago.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Global Access, Expert Instruction</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Location shouldn't limit opportunity. Our programs are accessible globally but taught by experts who've shipped products, built teams, and solved complex problems. Learn from practitioners, not just professors.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Accelerated Timeline</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Months, not years. Our intensive format compresses learning without compromising depth. Full immersion means faster results and quicker career transition. Your future doesn't have to wait.</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Career Support</h3>
+              <p class="text-itech-blush/80 leading-relaxed">We don't stop at graduation. Portfolio reviews, interview prep, industry connections—we're invested in your success because your success validates our mission.</p>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Community & Network</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Join a network of ambitious builders. Your cohort becomes your professional network, your accountability partners, your future collaborators. Learning is better together.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMS SECTION -->
+      <section id="programs" class="py-24 bg-itech-dark">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">Our Programs</h2>
+
+          <div class="space-y-12">
+            <!-- Program 1 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-3xl font-bold text-itech-blush mb-2">Full-Stack Development Intensive</h3>
+                <p class="text-itech-blush/80"><strong>Duration:</strong> 16 Weeks | <strong>Format:</strong> Full-Time</p>
+              </div>
+              <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h4 class="text-xl font-bold text-itech-coral mb-4">What You'll Build</h4>
+                    <ul class="text-itech-blush/80 space-y-2">
+                      <li>✓ 3 full-stack applications</li>
+                      <li>✓ 1 major capstone project</li>
+                      <li>✓ Portfolio site showcasing your work</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-xl font-bold text-itech-coral mb-4">Technologies Covered</h4>
+                    <p class="text-itech-blush/80">Modern JavaScript/TypeScript, React, Node.js, PostgreSQL, Git, Cloud Deployment, API Design, Testing</p>
+                  </div>
+                </div>
+                <p class="text-itech-blush/80 mb-6"><strong>Ideal For:</strong> Career changers, aspiring developers, entrepreneurs who want to build their own products</p>
+                <a href="#contact" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md font-semibold hover:bg-itech-red transition">View Curriculum</a>
+              </div>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-3xl font-bold text-itech-blush mb-2">Advanced Backend Engineering</h3>
+                <p class="text-itech-blush/80"><strong>Duration:</strong> 12 Weeks | <strong>Format:</strong> Full-Time</p>
+              </div>
+              <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h4 class="text-xl font-bold text-itech-coral mb-4">What You'll Build</h4>
+                    <ul class="text-itech-blush/80 space-y-2">
+                      <li>✓ Scalable API systems</li>
+                      <li>✓ Database optimization projects</li>
+                      <li>✓ Security-focused applications</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-xl font-bold text-itech-coral mb-4">Technologies Covered</h4>
+                    <p class="text-itech-blush/80">Advanced Node.js/Python, System Architecture, Database Design, Redis, Message Queues, Authentication, Performance Optimization</p>
+                  </div>
+                </div>
+                <p class="text-itech-blush/80 mb-6"><strong>Ideal For:</strong> Developers ready to level up, engineers targeting senior roles</p>
+                <a href="#contact" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md font-semibold hover:bg-itech-red transition">View Curriculum</a>
+              </div>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-3xl font-bold text-itech-blush mb-2">Modern Frontend Mastery</h3>
+                <p class="text-itech-blush/80"><strong>Duration:</strong> 10 Weeks | <strong>Format:</strong> Full-Time</p>
+              </div>
+              <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h4 class="text-xl font-bold text-itech-coral mb-4">What You'll Build</h4>
+                    <ul class="text-itech-blush/80 space-y-2">
+                      <li>✓ Complex interactive applications</li>
+                      <li>✓ Component libraries</li>
+                      <li>✓ Performance-optimized web apps</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-xl font-bold text-itech-coral mb-4">Technologies Covered</h4>
+                    <p class="text-itech-blush/80">Advanced React, Next.js, TypeScript, State Management, Animation, Testing, Accessibility, Build Tools</p>
+                  </div>
+                </div>
+                <p class="text-itech-blush/80 mb-6"><strong>Ideal For:</strong> Developers wanting to specialize in frontend, designers learning to code</p>
+                <a href="#contact" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md font-semibold hover:bg-itech-red transition">View Curriculum</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS SECTION -->
+      <section id="testimonials" class="py-24 bg-itech-burgundy">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">From Students to Professionals</h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-rgba(45, 38, 38, 0.6) rounded-lg p-8 border border-itech-blush/10">
+              <p class="text-xl font-bold text-itech-blush mb-4">"I went from marketing manager to full-stack developer in 4 months."</p>
+              <p class="text-itech-blush/80 mb-4 leading-relaxed">iTech didn't just teach me to code—they taught me to think like a developer. Six weeks after graduating, I landed a role at a growing startup. Best investment I've ever made.</p>
+              <p class="text-itech-coral font-semibold">— Sarah K., Full-Stack Developer</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-rgba(45, 38, 38, 0.6) rounded-lg p-8 border border-itech-blush/10">
+              <p class="text-xl font-bold text-itech-blush mb-4">"The projects I built at iTech became my interview talking points."</p>
+              <p class="text-itech-blush/80 mb-4 leading-relaxed">Recruiters weren't interested in my tutorial certificates. They wanted to see real work. My iTech portfolio opened every door.</p>
+              <p class="text-itech-coral font-semibold">— Marcus T., Backend Engineer</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-rgba(45, 38, 38, 0.6) rounded-lg p-8 border border-itech-blush/10">
+              <p class="text-xl font-bold text-itech-blush mb-4">"Finally, an education program that respects your time."</p>
+              <p class="text-itech-blush/80 mb-4 leading-relaxed">I couldn't afford four years back in school. iTech's intensive format meant I could transition careers without losing years of income. Worth every penny.</p>
+              <p class="text-itech-coral font-semibold">— Jessica L., Frontend Developer</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section id="faq" class="py-24 bg-itech-dark">
+        <div class="max-w-4xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">Common Questions</h2>
+
+          <div class="space-y-8">
+            <!-- FAQ Item 1 -->
+            <div class="border-l-4 border-itech-coral pl-6">
+              <h3 class="text-xl font-bold text-itech-blush mb-2">Do I need prior coding experience?</h3>
+              <p class="text-itech-blush/80">For our Full-Stack Intensive, motivated beginners are welcome—but you should complete our pre-work first. For Advanced programs, yes, prior experience is required.</p>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border-l-4 border-itech-coral pl-6">
+              <h3 class="text-xl font-bold text-itech-blush mb-2">What's the time commitment?</h3>
+              <p class="text-itech-blush/80">Full-time programs require 40-50 hours per week. This is intensive by design. Part-time options coming soon.</p>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border-l-4 border-itech-coral pl-6">
+              <h3 class="text-xl font-bold text-itech-blush mb-2">How is this different from online courses?</h3>
+              <p class="text-itech-blush/80">Live instruction, real projects, code reviews, career support, and a community of peers. Self-paced courses can't replicate that.</p>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="border-l-4 border-itech-coral pl-6">
+              <h3 class="text-xl font-bold text-itech-blush mb-2">What if I fall behind?</h3>
+              <p class="text-itech-blush/80">You'll have daily support from instructors and teaching assistants. We want you to succeed.</p>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="border-l-4 border-itech-coral pl-6">
+              <h3 class="text-xl font-bold text-itech-blush mb-2">Do you offer job placement?</h3>
+              <p class="text-itech-blush/80">We provide career support, portfolio reviews, and interview prep. We don't guarantee jobs, but we prepare you to get them.</p>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="border-l-4 border-itech-coral pl-6">
+              <h3 class="text-xl font-bold text-itech-blush mb-2">Can I work while doing the program?</h3>
+              <p class="text-itech-blush/80">Our full-time programs require full-time commitment. We recommend taking a break from work if possible.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM SECTION -->
+      <section id="contact" class="py-24 bg-itech-burgundy">
+        <div class="max-w-2xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-8">Ready to Transform Your Career?</h2>
+          <p class="text-itech-blush/80 text-center text-lg mb-12">Get in touch with our admissions team. We'll help you find the right program and answer any questions.</p>
+
+          <form id="contact-form" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-itech-blush font-semibold mb-2">Full Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your name">
+              </div>
+              <div>
+                <label for="email" class="block text-itech-blush font-semibold mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="phone" class="block text-itech-blush font-semibold mb-2">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your phone number">
+              </div>
+              <div>
+                <label for="program" class="block text-itech-blush font-semibold mb-2">Interested Program</label>
+                <select id="program" name="program" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral">
+                  <option value="">Select a program</option>
+                  <option value="fullstack">Full-Stack Development Intensive</option>
+                  <option value="backend">Advanced Backend Engineering</option>
+                  <option value="frontend">Modern Frontend Mastery</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block text-itech-blush font-semibold mb-2">Tell us about yourself</label>
+              <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your background, goals, and why iTech is right for you..."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="privacy" name="privacy" required class="mt-1">
+              <label for="privacy" class="text-itech-blush/80 text-sm">I agree to receive communications from iTech about programs and opportunities.</label>
+            </div>
+
+            <button type="submit" class="w-full bg-itech-coral text-white py-4 rounded-md font-semibold text-lg hover:bg-itech-red transition">Send My Application</button>
+          </form>
+
+          <p class="text-center text-itech-blush/60 text-sm mt-8">Questions? Email education@itech.com or call us directly.</p>
+        </div>
+      </section>
+
+      <!-- FINAL CTA SECTION -->
+      <section id="final-cta" class="py-24 bg-gradient-to-r from-itech-burgundy to-itech-red text-center">
+        <div class="max-w-4xl mx-auto px-6">
+          <h2 class="text-5xl md:text-6xl font-extrabold text-itech-blush mb-6">Stop Learning. Start Building.</h2>
+          <p class="text-itech-blush/80 text-xl mb-10">The developers we need tomorrow aren't being trained by yesterday's institutions. Your career transformation starts with one decision.</p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="#contact" class="inline-block bg-itech-blush text-itech-dark py-4 px-10 rounded-md font-semibold text-lg hover:bg-itech-dark transition">Apply Now</a>
+            <a href="#programs" class="inline-block bg-transparent border-2 border-itech-blush text-itech-blush py-4 px-10 rounded-md font-semibold text-lg hover:bg-itech-blush hover:text-itech-dark transition">Download Program Guide</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-dark border-t border-t-white/10">
+      <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">About iTech</h3>
+            <p class="text-gray-400 mb-4 leading-relaxed">iTech: Where Education Meets Innovation Meets Execution</p>
+            <p class="text-gray-400 mb-6 leading-relaxed">Building the future of technology, one solution at a time.</p>
+            <p class="text-gray-500 text-sm">© 2024 iTech. All rights reserved.</p>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">Quick Links</h3>
+            <nav class="flex flex-col gap-3">
+              <a href="index.html#education" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Back to Home</a>
+              <a href="#programs" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Our Programs</a>
+              <a href="#testimonials" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Success Stories</a>
+              <a href="#contact" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Contact</a>
+            </nav>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">Get in Touch</h3>
+            <p class="text-gray-400 mb-6 leading-relaxed">Ready to start your next chapter?</p>
+            <a href="mailto:education@itech.com" class="inline-block text-itech-coral font-semibold hover:text-itech-blush transition-colors">education@itech.com</a>
+            <p class="text-gray-500 text-sm mt-6">Join the next cohort and transform your career.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-t-white/10 mt-12 pt-6 text-center">
+          <p class="text-gray-500 text-sm">Crafted with care by iTech — Empowering the next generation of technology leaders.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/three-scene.js" defer></script>
+    <script src="js/animations.js" defer></script>
+  </body>
+</html>

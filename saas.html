@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SaaS Development | iTech</title>
+    <meta name="description" content="Scale your SaaS from MVP to market leader. iTech builds enterprise-grade software solutions designed for growth, user retention, and profitability. Your next killer product starts here." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@700;800&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN + config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'itech-dark': '#2D2626',
+              'itech-burgundy': '#7A2120',
+              'itech-coral': '#EA5250',
+              'itech-red': '#8C3130',
+              'itech-blush': '#FCE7E7'
+            },
+            fontFamily: {
+              'primary': ['Space Grotesk', 'Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body class="bg-itech-dark text-itech-blush font-primary antialiased">
+    <a class="sr-only" href="#main" id="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full z-40 top-0 left-0 transition-colors duration-300" id="site-header">
+      <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="navbar-brand" aria-label="iTech home">
+          <span class="navbar-logo-text">i-<span class="navbar-logo-tech">Tech</span></span>
+        </a>
+        <div class="hidden md:flex gap-8 items-center text-sm">
+          <a href="education.html" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center ml-4">
+          <a href="#contact" class="get-started inline-flex items-center justify-center px-5 py-2 rounded-md font-semibold" aria-label="Get Started">Get Started</a>
+        </div>
+        <button id="mobile-toggle" aria-expanded="false" class="md:hidden p-2 rounded focus:outline-none focus:ring-2">
+          <span class="sr-only">Open menu</span>
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-itech-dark/90 backdrop-blur-sm">
+        <div class="px-6 py-4 flex flex-col gap-3">
+          <a href="education.html" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#contact" class="get-started inline-block text-center mt-2" aria-label="Get Started">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main">
+      <!-- HERO SECTION -->
+      <section id="hero" class="relative overflow-hidden">
+        <div id="three-container" class="absolute inset-0 -z-10"></div>
+
+        <div class="max-w-7xl mx-auto h-full px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-32">
+          <div class="py-8 md:py-0 text-center md:text-left mt-12 md:mt-20">
+            <h1 id="hero-headline" class="font-extrabold text-5xl md:text-[5rem] lg:text-[6rem] leading-tight text-itech-blush opacity-0">Scale Your SaaS to Market Leader</h1>
+            <p id="hero-sub" class="text-lg md:text-xl text-itech-blush/80 opacity-0 mt-6">Enterprise-grade software built for growth, user retention, and profitability. From MVP to scaling unicorn—we've shipped over 50+ SaaS products.</p>
+            <div class="mt-8 flex flex-col md:flex-row gap-4">
+              <a href="#services" id="cta-hero" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md text-lg font-semibold transform transition hover:scale-105" aria-label="Explore SaaS Services">Explore Services</a>
+              <a href="#contact" class="inline-block bg-transparent border-2 border-itech-coral text-itech-coral py-3 px-6 rounded-md text-lg font-semibold transform transition hover:bg-itech-coral hover:text-white" aria-label="Schedule a Consultation">Schedule a Consultation</a>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col items-center justify-center gap-4 py-8 md:py-0">
+            <picture>
+             
+              <img src="/images/pexels-egorkomarov-12605416.jpg" alt="SaaS product dashboard" class="max-w-full rounded-lg shadow-lg object-cover w-full md:w-auto" style="max-height:400px;" loading="lazy">
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO SECTION -->
+      <section id="intro" class="py-24 bg-itech-burgundy">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="text-center mb-12">
+            <p class="text-itech-coral font-semibold mb-3">Pillar 02: SaaS Development</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-itech-blush mb-8">From MVP to Market Domination</h2>
+          </div>
+          <div class="space-y-6 text-itech-blush/90 text-lg leading-relaxed">
+            <p>Most SaaS companies fail not because of bad ideas, but because of bad execution. Slow releases. Poor UX. Unscalable architecture. Limited growth strategies that don't convert.</p>
+            <p>iTech specializes in building SaaS products that users love, operators scale, and investors fund. We combine product strategy, technical excellence, and growth-focused design to create software that dominates markets.</p>
+            <p class="font-semibold text-itech-blush">Your SaaS doesn't have to struggle. Let's build something that scales.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES SECTION -->
+      <section id="services" class="py-24 bg-itech-dark">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">SaaS Services We Deliver</h2>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">MVP Development</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Validate your idea fast. We build focused, feature-complete MVPs in 8-12 weeks. Test your market hypothesis with real users without burning cash.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Product Architecture</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Build for scale from day one. Our architects design systems that handle millions of users, transactions, and data points without breaking a sweat.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Growth & Monetization</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Smart growth strategies embedded in your product. Pricing optimization, retention mechanics, and viral loops that actually convert.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">SaaS Refactoring</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Inherited a legacy product? We modernize codebases, improve performance, reduce technical debt, and unblock growth-limiting constraints.</p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Team Augmentation</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Scale your in-house team with experienced engineers, product managers, and architects who integrate seamlessly into your culture.</p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Integration & APIs</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Build powerful integrations with third-party services. Custom APIs, webhooks, and data pipelines that expand your product's reach.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASE STUDIES SECTION -->
+      <section id="case-studies" class="py-24 bg-itech-burgundy">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">SaaS We've Built</h2>
+
+          <div class="space-y-12">
+            <!-- Case Study 1 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-2xl font-bold text-itech-blush mb-2">Analytics Platform</h3>
+                <p class="text-itech-blush/80">B2B SaaS | Early Stage → Series A</p>
+              </div>
+              <div class="p-8">
+                <p class="text-itech-blush/80 mb-4">Built a real-time analytics dashboard for enterprise clients. Scaled from 0 to 50+ paying customers in 6 months. Implemented custom data pipelines handling 10M+ events daily.</p>
+                <p class="text-itech-coral font-semibold">Result: $2M ARR, Series A funding secured</p>
+              </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-2xl font-bold text-itech-blush mb-2">Collaboration Tool</h3>
+                <p class="text-itech-blush/80">B2B SaaS | MVP → Scale</p>
+              </div>
+              <div class="p-8">
+                <p class="text-itech-blush/80 mb-4">Refactored legacy codebase and redesigned UX. Reduced onboarding time by 60%, increased feature adoption by 45%. Implemented real-time collaboration engine.</p>
+                <p class="text-itech-coral font-semibold">Result: 10x user growth, expanded enterprise sales</p>
+              </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-2xl font-bold text-itech-blush mb-2">Marketplace SaaS</h3>
+                <p class="text-itech-blush/80">B2C2B SaaS | Pre-Launch → Growth</p>
+              </div>
+              <div class="p-8">
+                <p class="text-itech-blush/80 mb-4">Built a two-sided marketplace from scratch with sophisticated matching algorithms. Implemented payment processing, escrow, and dispute resolution systems.</p>
+                <p class="text-itech-coral font-semibold">Result: $500K MRR in year 2, profitable operations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH STACK SECTION -->
+      <section id="tech-stack" class="py-24 bg-itech-dark">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush mb-12">Enterprise-Grade Technology Stack</h2>
+          
+          <div class="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-xl font-bold text-itech-coral mb-6">Backend & Infrastructure</h3>
+              <ul class="text-itech-blush/80 space-y-3 leading-relaxed">
+                <li>Node.js, Python, Go for high-performance APIs</li>
+                <li>PostgreSQL, MongoDB, Redis for data solutions</li>
+                <li>AWS, Google Cloud for scalable infrastructure</li>
+                <li>Kubernetes for container orchestration</li>
+                <li>Message queues & event streams for async processing</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-itech-coral mb-6">Frontend & User Experience</h3>
+              <ul class="text-itech-blush/80 space-y-3 leading-relaxed">
+                <li>React, Next.js for performant web apps</li>
+                <li>TypeScript for code reliability</li>
+                <li>Tailwind CSS for rapid UI development</li>
+                <li>WebSockets for real-time features</li>
+                <li>Mobile-first responsive design</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM SECTION -->
+      <section id="contact" class="py-24 bg-itech-burgundy">
+        <div class="max-w-2xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-8">Ready to Scale Your SaaS?</h2>
+          <p class="text-itech-blush/80 text-center text-lg mb-12">Let's talk strategy, execution, and growth. Schedule a consultation with our SaaS experts.</p>
+
+          <form id="contact-form" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-itech-blush font-semibold mb-2">Full Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your name">
+              </div>
+              <div>
+                <label for="email" class="block text-itech-blush font-semibold mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="company" class="block text-itech-blush font-semibold mb-2">Company Name</label>
+                <input type="text" id="company" name="company" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your company">
+              </div>
+              <div>
+                <label for="stage" class="block text-itech-blush font-semibold mb-2">SaaS Stage</label>
+                <select id="stage" name="stage" required class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral">
+                  <option value="">Select your stage</option>
+                  <option value="ideation">Ideation / Pre-Launch</option>
+                  <option value="mvp">MVP Stage</option>
+                  <option value="growth">Growth Stage</option>
+                  <option value="scaling">Scaling / Series A+</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block text-itech-blush font-semibold mb-2">Tell us about your SaaS</label>
+              <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-itech-dark text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your product, market, and goals..."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="privacy" name="privacy" required class="mt-1">
+              <label for="privacy" class="text-itech-blush/80 text-sm">I agree to receive communications from iTech about SaaS development opportunities.</label>
+            </div>
+
+            <button type="submit" class="w-full bg-itech-coral text-white py-4 rounded-md font-semibold text-lg hover:bg-itech-red transition">Send My Inquiry</button>
+          </form>
+
+          <p class="text-center text-itech-blush/60 text-sm mt-8">Questions? Email hello@itech.com</p>
+        </div>
+      </section>
+
+      <!-- FINAL CTA SECTION -->
+      <section id="final-cta" class="py-24 bg-gradient-to-r from-itech-burgundy to-itech-red text-center">
+        <div class="max-w-4xl mx-auto px-6">
+          <h2 class="text-5xl md:text-6xl font-extrabold text-itech-blush mb-6">Your Next Billion-Dollar Idea</h2>
+          <p class="text-itech-blush/80 text-xl mb-10">Starts with a team that understands SaaS. Builds for scale. And never compromises on quality.</p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="#contact" class="inline-block bg-itech-blush text-itech-dark py-4 px-10 rounded-md font-semibold text-lg hover:bg-itech-dark transition">Schedule a Consultation</a>
+            <a href="index.html" class="inline-block bg-transparent border-2 border-itech-blush text-itech-blush py-4 px-10 rounded-md font-semibold text-lg hover:bg-itech-blush hover:text-itech-dark transition">Back to Home</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-dark border-t border-t-white/10">
+      <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">About iTech</h3>
+            <p class="text-gray-400 mb-4 leading-relaxed">iTech: Where Education Meets Innovation Meets Execution</p>
+            <p class="text-gray-400 mb-6 leading-relaxed">Building the future of technology, one solution at a time.</p>
+            <p class="text-gray-500 text-sm">© 2024 iTech. All rights reserved.</p>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">Services</h3>
+            <nav class="flex flex-col gap-3">
+              <a href="education.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Education</a>
+              <a href="saas.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">SaaS Development</a>
+              <a href="web-development.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Web Development</a>
+              <a href="index.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Back to Home</a>
+            </nav>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">Get in Touch</h3>
+            <p class="text-gray-400 mb-6 leading-relaxed">Ready to scale your SaaS?</p>
+            <a href="mailto:hello@itech.com" class="inline-block text-itech-coral font-semibold hover:text-itech-blush transition-colors">hello@itech.com</a>
+            <p class="text-gray-500 text-sm mt-6">Let's build something extraordinary together.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-t-white/10 mt-12 pt-6 text-center">
+          <p class="text-gray-500 text-sm">Crafted with care by iTech — Building products that scale.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/three-scene.js" defer></script>
+    <script src="js/animations.js" defer></script>
+  </body>
+</html>

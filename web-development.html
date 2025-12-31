@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Web Development | iTech</title>
+    <meta name="description" content="High-performance websites that convert. iTech builds beautiful, fast, accessible web experiences that drive results. From branding to e-commerce to custom applications—we deliver digital excellence." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@700;800&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN + config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'itech-dark': '#2D2626',
+              'itech-burgundy': '#7A2120',
+              'itech-coral': '#EA5250',
+              'itech-red': '#8C3130',
+              'itech-blush': '#FCE7E7'
+            },
+            fontFamily: {
+              'primary': ['Space Grotesk', 'Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body class="bg-itech-dark text-itech-blush font-primary antialiased">
+    <a class="sr-only" href="#main" id="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full z-40 top-0 left-0 transition-colors duration-300" id="site-header">
+      <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="navbar-brand" aria-label="iTech home">
+          <span class="navbar-logo-text">i-<span class="navbar-logo-tech">Tech</span></span>
+        </a>
+        <div class="hidden md:flex gap-8 items-center text-sm">
+          <a href="education.html" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center ml-4">
+          <a href="#contact" class="get-started inline-flex items-center justify-center px-5 py-2 rounded-md font-semibold" aria-label="Get Started">Get Started</a>
+        </div>
+        <button id="mobile-toggle" aria-expanded="false" class="md:hidden p-2 rounded focus:outline-none focus:ring-2">
+          <span class="sr-only">Open menu</span>
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-itech-dark/90 backdrop-blur-sm">
+        <div class="px-6 py-4 flex flex-col gap-3">
+          <a href="education.html" class="nav-link">Education</a>
+          <a href="saas.html" class="nav-link">SaaS</a>
+          <a href="web-development.html" class="nav-link">Web Development</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#contact" class="get-started inline-block text-center mt-2" aria-label="Get Started">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main">
+      <!-- HERO SECTION -->
+      <section id="hero" class="relative overflow-hidden">
+        <div id="three-container" class="absolute inset-0 -z-10"></div>
+
+        <div class="max-w-7xl mx-auto h-full px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-32">
+          <div class="py-8 md:py-0 text-center md:text-left mt-12 md:mt-20">
+            <h1 id="hero-headline" class="font-extrabold text-5xl md:text-[5rem] lg:text-[6rem] leading-tight text-itech-blush opacity-0">Web Excellence That Converts</h1>
+            <p id="hero-sub" class="text-lg md:text-xl text-itech-blush/80 opacity-0 mt-6">Beautiful, blazing-fast websites built for conversion. From stunning branding sites to complex web applications—we deliver digital experiences that drive real business results.</p>
+            <div class="mt-8 flex flex-col md:flex-row gap-4">
+              <a href="#services" id="cta-hero" class="inline-block bg-itech-coral text-white py-3 px-6 rounded-md text-lg font-semibold transform transition hover:scale-105" aria-label="Explore Web Services">Explore Services</a>
+              <a href="#contact" class="inline-block bg-transparent border-2 border-itech-coral text-itech-coral py-3 px-6 rounded-md text-lg font-semibold transform transition hover:bg-itech-coral hover:text-white" aria-label="Request a Quote">Request a Quote</a>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col items-center justify-center gap-4 py-8 md:py-0">
+            <picture>
+              
+              <img src="/images/Pasted image.png" alt="Web design showcase" class="max-w-full rounded-lg shadow-lg object-cover w-full md:w-auto" style="max-height:400px;" loading="lazy">
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO SECTION -->
+      <section id="intro" class="py-24 bg-itech-burgundy">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="text-center mb-12">
+            <p class="text-itech-coral font-semibold mb-3">Pillar 03: Web Development</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-itech-blush mb-8">Build Better. Launch Faster. Win Markets.</h2>
+          </div>
+          <div class="space-y-6 text-itech-blush/90 text-lg leading-relaxed">
+            <p>Your website is your first impression. Too many businesses settle for outdated, slow, and fragile web experiences. That's a missed opportunity.</p>
+            <p>iTech builds web products that blend aesthetic excellence with technical precision. Responsive design. Lightning-fast performance. Conversion-optimized funnels. Security that matters. Accessibility that's standard.</p>
+            <p class="font-semibold text-itech-blush">Whether you need a stunning landing page, an e-commerce platform, or a complex web application—we build digital experiences that perform.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES SECTION -->
+      <section id="services" class="py-24 bg-itech-dark">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">Web Services We Deliver</h2>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Branding Websites</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Stunning sites that tell your story. Custom design, compelling copy, and smooth interactions that leave lasting impressions. Your brand deserves better than templates.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">E-Commerce Platforms</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Build profitable online stores. Seamless checkout, inventory management, payment processing, and analytics that drive sales. We've built platforms generating millions in revenue.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Web Applications</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Complex, interactive web apps that work across devices. Real-time features, advanced state management, and performance optimization. From simple tools to enterprise software.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Progressive Web Apps</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Web apps that feel native. Offline functionality, push notifications, install-to-home-screen, and lightning-fast performance. The best of web and mobile.</p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Content Platforms</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Headless CMS integration, blog platforms, and content delivery systems. Empower your team to publish and manage content without touching code.</p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="bg-gradient-to-br from-itech-dark to-rgba(45, 38, 38, 0.8) border border-itech-coral/20 rounded-lg p-8 hover:border-itech-coral/50 transition">
+              <h3 class="text-2xl font-bold text-itech-coral mb-4">Website Optimization</h3>
+              <p class="text-itech-blush/80 leading-relaxed">Speed up your existing site. Performance audits, code optimization, image compression, and caching strategies that increase conversions and reduce bounce rates.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO SECTION -->
+      <section id="portfolio" class="py-24 bg-itech-burgundy">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">Recent Web Projects</h2>
+
+          <div class="space-y-12">
+            <!-- Project 1 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-2xl font-bold text-itech-blush mb-2">Luxury E-Commerce Platform</h3>
+                <p class="text-itech-blush/80">Custom e-commerce | Conversion-focused</p>
+              </div>
+              <div class="p-8">
+                <p class="text-itech-blush/80 mb-4">Built a high-end product showcase with immersive 3D product visualization. Integrated with premium payment processors and CRM systems. Optimized for luxury brand experience.</p>
+                <p class="text-itech-coral font-semibold">Result: 35% conversion rate increase, $10M+ annual sales</p>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-2xl font-bold text-itech-blush mb-2">Corporate Dashboard Portal</h3>
+                <p class="text-itech-blush/80">Enterprise web app | Real-time data</p>
+              </div>
+              <div class="p-8">
+                <p class="text-itech-blush/80 mb-4">Developed a real-time analytics dashboard for 50,000+ daily active users. Complex data visualization, role-based access, and API integrations. Handles millions of data points.</p>
+                <p class="text-itech-coral font-semibold">Result: 99.9% uptime, 2ms response times</p>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="border border-itech-coral/30 rounded-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-itech-burgundy to-itech-red p-8">
+                <h3 class="text-2xl font-bold text-itech-blush mb-2">SaaS Marketing Website</h3>
+                <p class="text-itech-blush/80">Branding site | Conversion optimization</p>
+              </div>
+              <div class="p-8">
+                <p class="text-itech-blush/80 mb-4">Created a stunning, high-converting website for a B2B SaaS platform. Animated hero, smooth scrolling, customer testimonials, and optimized CTAs. Responsive and accessible.</p>
+                <p class="text-itech-coral font-semibold">Result: 28% demo request increase, 4.2s average load time</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERFORMANCE SECTION -->
+      <section id="performance" class="py-24 bg-itech-dark">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-16">Performance First</h2>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div class="p-6">
+              <p class="text-4xl font-bold text-itech-coral mb-2">98/100</p>
+              <p class="text-itech-blush/80">Average Lighthouse Score</p>
+            </div>
+            <div class="p-6">
+              <p class="text-4xl font-bold text-itech-coral mb-2">&lt;2s</p>
+              <p class="text-itech-blush/80">Average Page Load Time</p>
+            </div>
+            <div class="p-6">
+              <p class="text-4xl font-bold text-itech-coral mb-2">99.9%</p>
+              <p class="text-itech-blush/80">Uptime Guarantee</p>
+            </div>
+            <div class="p-6">
+              <p class="text-4xl font-bold text-itech-coral mb-2">AAA</p>
+              <p class="text-itech-blush/80">WCAG Accessibility</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH STACK SECTION -->
+      <section id="tech-stack" class="py-24 bg-itech-burgundy">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush mb-12">Modern, Scalable Technology</h2>
+          
+          <div class="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-xl font-bold text-itech-coral mb-6">Frontend Excellence</h3>
+              <ul class="text-itech-blush/80 space-y-3 leading-relaxed">
+                <li>React, Next.js for powerful web apps</li>
+                <li>TypeScript for code safety</li>
+                <li>Tailwind CSS for rapid design</li>
+                <li>Framer Motion for smooth animations</li>
+                <li>Mobile-first responsive design</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-itech-coral mb-6">Backend & Infrastructure</h3>
+              <ul class="text-itech-blush/80 space-y-3 leading-relaxed">
+                <li>Node.js, Python for APIs</li>
+                <li>PostgreSQL for reliable data</li>
+                <li>AWS, Vercel for global CDN</li>
+                <li>Serverless functions for scale</li>
+                <li>Advanced caching strategies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM SECTION -->
+      <section id="contact" class="py-24 bg-itech-dark">
+        <div class="max-w-2xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-itech-blush text-center mb-8">Ready for a Web Transformation?</h2>
+          <p class="text-itech-blush/80 text-center text-lg mb-12">Tell us about your web project. We'll provide a detailed proposal and timeline.</p>
+
+          <form id="contact-form" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-itech-blush font-semibold mb-2">Full Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-itech-burgundy text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your name">
+              </div>
+              <div>
+                <label for="email" class="block text-itech-blush font-semibold mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-itech-burgundy text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="company" class="block text-itech-blush font-semibold mb-2">Company Name</label>
+                <input type="text" id="company" name="company" required class="w-full px-4 py-3 bg-itech-burgundy text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your company">
+              </div>
+              <div>
+                <label for="service" class="block text-itech-blush font-semibold mb-2">Service Interested In</label>
+                <select id="service" name="service" required class="w-full px-4 py-3 bg-itech-burgundy text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral">
+                  <option value="">Select a service</option>
+                  <option value="branding">Branding Website</option>
+                  <option value="ecommerce">E-Commerce Platform</option>
+                  <option value="webapp">Web Application</option>
+                  <option value="pwa">Progressive Web App</option>
+                  <option value="content">Content Platform</option>
+                  <option value="optimization">Website Optimization</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block text-itech-blush font-semibold mb-2">Tell us about your project</label>
+              <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-itech-burgundy text-itech-blush border border-itech-coral/30 rounded-md focus:outline-none focus:border-itech-coral" placeholder="Your project goals, timeline, and budget..."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="privacy" name="privacy" required class="mt-1">
+              <label for="privacy" class="text-itech-blush/80 text-sm">I agree to receive communications from iTech about web development projects.</label>
+            </div>
+
+            <button type="submit" class="w-full bg-itech-coral text-white py-4 rounded-md font-semibold text-lg hover:bg-itech-red transition">Send My Project Brief</button>
+          </form>
+
+          <p class="text-center text-itech-blush/60 text-sm mt-8">Questions? Email hello@itech.com</p>
+        </div>
+      </section>
+
+      <!-- FINAL CTA SECTION -->
+      <section id="final-cta" class="py-24 bg-gradient-to-r from-itech-burgundy to-itech-red text-center">
+        <div class="max-w-4xl mx-auto px-6">
+          <h2 class="text-5xl md:text-6xl font-extrabold text-itech-blush mb-6">Beautiful Code. Better Results.</h2>
+          <p class="text-itech-blush/80 text-xl mb-10">Every web project is a chance to elevate your brand. Let's make something extraordinary.</p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="#contact" class="inline-block bg-itech-blush text-itech-dark py-4 px-10 rounded-md font-semibold text-lg hover:bg-itech-dark">Request a Quote</a>
+            <a href="index.html" class="inline-block bg-transparent border-2 border-itech-blush text-itech-blush py-4 px-10 rounded-md font-semibold text-lg hover:bg-itech-blush hover:text-itech-dark transition">Back to Home</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-dark border-t border-t-white/10">
+      <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">About iTech</h3>
+            <p class="text-gray-400 mb-4 leading-relaxed">iTech: Where Education Meets Innovation Meets Execution</p>
+            <p class="text-gray-400 mb-6 leading-relaxed">Building the future of technology, one solution at a time.</p>
+            <p class="text-gray-500 text-sm">© 2024 iTech. All rights reserved.</p>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">Services</h3>
+            <nav class="flex flex-col gap-3">
+              <a href="education.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Education</a>
+              <a href="saas.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">SaaS Development</a>
+              <a href="web-development.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Web Development</a>
+              <a href="index.html" class="footer-link text-gray-400 hover:text-itech-coral transition-colors">Back to Home</a>
+            </nav>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="text-lg font-bold text-white mb-4">Get in Touch</h3>
+            <p class="text-gray-400 mb-6 leading-relaxed">Ready to build something great?</p>
+            <a href="mailto:hello@itech.com" class="inline-block text-itech-coral font-semibold hover:text-itech-blush transition-colors">hello@itech.com</a>
+            <p class="text-gray-500 text-sm mt-6">Let's create digital excellence together.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-t-white/10 mt-12 pt-6 text-center">
+          <p class="text-gray-500 text-sm">Crafted with care by iTech — Building digital experiences that matter.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/three-scene.js" defer></script>
+    <script src="js/animations.js" defer></script>
+  </body>
+</html>
